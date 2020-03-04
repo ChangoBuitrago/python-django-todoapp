@@ -1,11 +1,16 @@
-- type: parallel
-  name: example_parallel_tests
-  steps:
-    - service: web-codeship-example-python
-      command: python manage.py test
-    - service: web-codeship-example-python
-      command: python manage.py test
-- name: deploy
-  tag: master
-  service: codeship-heroku-deployment
-  command: codeship_heroku deploy /deploy chango-buitrago-todo
+- type: serial
+  name: example_serial_main_pipeline
+  steps:      
+  - type: parallel
+    name: example_parallel_tests
+    steps:
+      - service: web-codeship-example-python
+        name: rspec_1
+        command: python manage.py test todos.tests.TodoListCreateAPIViewTestCase
+      - service: web-codeship-example-python
+        name: rspec_2
+        command: python manage.py test todos.tests.TodoDetailAPIViewTestCase
+  - service: codeship-heroku-deployment
+    name: example_manual_deploy
+    tag: master
+    command: codeship_heroku deploy /deploy chango-buitrago-todo
