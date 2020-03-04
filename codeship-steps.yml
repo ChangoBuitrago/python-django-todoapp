@@ -1,15 +1,10 @@
 - type: parallel
-  name: example_parallel_steps
+  name: example_parallel_tests
   steps:
     - service: web-codeship-example-python
-      # shell wrapper not required unless passing along env vars or combining commands
-      command: 'printenv'
+      command: python manage.py test
     - service: web-codeship-example-python
-      # shell wrapper not required unless passing along env vars or combining commands
-      command: 'ls'
-- name: tests
-  service: web-codeship-example-python
-  command: python manage.py test
+      command: python manage.py test
 - name: deploy
   tag: master
   service: codeship-heroku-deployment
