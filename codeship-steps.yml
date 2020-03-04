@@ -6,10 +6,10 @@
       steps:
         - service: web-codeship-example-python
           name: rspec_1
-          command: bin/ci "python manage.py test todos.tests.TodoListCreateAPIViewTestCase"
+          command: python manage.py test todos.tests.TodoListCreateAPIViewTestCase
         - service: web-codeship-example-python
           name: rspec_2
-          command: bin/ci "python manage.py test todos.tests.TodoDetailAPIViewTestCase"
+          command: python manage.py test todos.tests.TodoDetailAPIViewTestCase
     - service: codeship-heroku-deployment
       name: example_manual_deploy
       tag: master
