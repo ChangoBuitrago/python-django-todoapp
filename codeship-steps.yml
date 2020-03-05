@@ -13,4 +13,4 @@
     - service: codeship-heroku-deployment
       name: example_deploy
       tag: master
-      command: codeship_heroku /deploy chango-buitrago-todo
+      command: ccodeship_heroku deploy /deploy chango-buitrago-todo
