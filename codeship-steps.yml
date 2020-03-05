@@ -9,8 +9,8 @@
           command: python manage.py test todos.tests.TodoListCreateAPIViewTestCase
         - service: web-codeship-example-python
           name: rspec_2
-          command: python manage.py test todos.tests.TodoDetailAPIViewTestCase
+          command: python manage.py test tests.TodoDetailAPIViewTestCase
     - service: codeship-heroku-deployment
       name: example_manual_deploy
       tag: master
-      command: codeship_heroku_deploy
+      command: codeship_heroku_deploy /deploy  chango-buitrago-todo
